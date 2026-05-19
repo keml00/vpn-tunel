@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPN Buy & Sell - Animated Story</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow: hidden;
+        }
+
+        .story-container {
+            width: 1080px;
+            height: 1920px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated background particles */
+        .particle {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float-particle 8s infinite ease-in-out;
+        }
+
+        @keyframes float-particle {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1920px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Animated gradient background */
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .story-container {
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #667eea);
+            background-size: 400% 400%;
+            animation: gradient-shift 6s ease infinite;
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 60px;
+        }
+
+        /* Animated logo */
+        .logo-icon {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 60px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.3);
+            animation: logo-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes logo-pulse {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                box-shadow: 0 40px 100px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: scale(1.05) rotate(2deg);
+                box-shadow: 0 50px 120px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        .logo-icon svg {
+            width: 160px;
+            height: 160px;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+            animation: lock-shake 3s ease-in-out infinite;
+        }
+
+        @keyframes lock-shake {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-5deg);
+            }
+            75% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* Animated text */
+        .brand-name {
+            font-size: 96px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 30px;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            letter-spacing: -2px;
+            animation: text-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes text-glow {
+            0%, 100% {
+                text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                text-shadow: 0 10px 50px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        .tagline {
+            font-size: 52px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 80px;
+            font-weight: 600;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: fade-in-out 3s ease-in-out infinite;
+        }
+
+        @keyframes fade-in-out {
+            0%, 100% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Features with staggered animation */
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            font-size: 48px;
+            color: white;
+            font-weight: 600;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: slide-in 1s ease-out forwards;
+        }
+
+        .feature:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .feature:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .feature:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes slide-in {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+            animation: icon-bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes icon-bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Animated pricing */
+        .pricing {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 50px 80px;
+            margin-bottom: 60px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            animation: pricing-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pricing-pulse {
+            0%, 100% {
+                transform: scale(1);
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                border-color: rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .price {
+            font-size: 120px;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: number-count 3s ease-in-out infinite;
+        }
+
+        .price-label {
+            font-size: 44px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 10px;
+        }
+
+        /* CTA button */
+        .cta {
+            background: white;
+            color: #667eea;
+            font-size: 56px;
+            font-weight: 800;
+            padding: 40px 100px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 60px;
+            animation: cta-pulse 1.5s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes cta-pulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        /* URL */
+        .url {
+            font-size: 48px;
+            color: white;
+            font-weight: 700;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: url-blink 2s ease-in-out infinite;
+        }
+
+        @keyframes url-blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* Telegram */
+        .telegram {
+            margin-top: 40px;
+            font-size: 44px;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            animation: telegram-float 3s ease-in-out infinite;
+        }
+
+        @keyframes telegram-float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .telegram svg {
+            animation: telegram-spin 4s linear infinite;
+        }
+
+        @keyframes telegram-spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="story-container">
+        <!-- Animated particles -->
+        <div class="particles" id="particles"></div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Logo -->
+            <div class="logo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+            </div>
+
+            <!-- Brand name -->
+            <div class="brand-name">VPN Buy & Sell</div>
+            <div class="tagline">Безопасный VPN</div>
+
+            <!-- Features -->
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <span>Надежная защита</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <span>Высокая скорость</span>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <span>До 5 устройств</span>
+                </div>
+            </div>
+
+            <!-- Pricing -->
+            <div class="pricing">
+                <div class="price">от 200₽</div>
+                <div class="price-label">в месяц</div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta">Подключить сейчас</div>
+
+            <!-- URL -->
+            <div class="url">tunel-delta.vercel.app</div>
+
+            <!-- Telegram -->
+            <div class="telegram">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                </svg>
+                <span>@vpnbuysell_bot</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create animated particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = (8 + Math.random() * 4) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Instructions
+        console.log('=== Инструкция по созданию GIF ===');
+        console.log('');
+        console.log('Вариант 1: Использовать онлайн сервис');
+        console.log('1. Откройте https://ezgif.com/video-to-gif');
+        console.log('2. Запишите видео этой страницы (5-10 секунд)');
+        console.log('3. Загрузите видео и конвертируйте в GIF');
+        console.log('');
+        console.log('Вариант 2: Использовать ScreenToGif (Windows)');
+        console.log('1. Скачайте: https://www.screentogif.com/');
+        console.log('2. Запустите и выберите "Recorder"');
+        console.log('3. Выделите эту страницу');
+        console.log('4. Запишите 5-10 секунд');
+        console.log('5. Сохраните как GIF');
+        console.log('');
+        console.log('Вариант 3: Сделать скриншот (статичное изображение)');
+        console.log('1. F12 → Ctrl+Shift+P');
+        console.log('2. "Capture full size screenshot"');
+    </script>
+</body>
+</html>
